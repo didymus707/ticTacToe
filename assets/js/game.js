@@ -45,6 +45,9 @@ const Player = (name, tile) => {
       player.tile = tile.pop
     }
   }
+  return {
+    getName, setName, selectTile
+  }
 }
 game => module
 // player => factory function;
