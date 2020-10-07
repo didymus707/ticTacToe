@@ -1,4 +1,4 @@
-const gameBoard = (() => {
+export const gameBoard = (() => {
   let board = ["", "", "", "", "", "", "", "", ""];
   let o = "O";
   let x = "X";
@@ -25,7 +25,7 @@ const gameBoard = (() => {
     }
   };
 
-  const displayBoard = () {
+  const displayBoard = () => {
     let spots = document.getElementsByClassName('spot');
     for(let i = 0; i < spots.length; i++) {
       spots[i].innerHTML = board[i];
@@ -42,7 +42,7 @@ const gameBoard = (() => {
   };
 })();
 
-const Player = (name, tile) => {
+export const Player = (name, tile) => {
   const getName = () => name;
   const setName = () => name;
   const selectTile = (index) => {
@@ -64,7 +64,7 @@ const Player = (name, tile) => {
   };
 };
 
-const Game = (() => {
+export const Game = (() => {
   let score = [0, 0];
   const changeScore = (index) => {
     score[index] += 1;
