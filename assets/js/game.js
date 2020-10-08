@@ -1,7 +1,8 @@
 export const gameBoard = (() => {
-  let board = ["", "", "", "", "", "", "", "", ""];
-  let o = "O";
-  let x = "X";
+  let board = ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'];
+  let tile = ['X', 'O'];
+  const message = document.getElementById('message');
+
   const mark = (space, tile) => {
     if (board[space] !== "") {
       MessageChannel.innerHTML = "Choose another space";
@@ -10,6 +11,7 @@ export const gameBoard = (() => {
       check();
     }
   };
+
   const check = () => {
     if (
       (board[0] === board[1] && board[1] === board[2]) ||
@@ -26,26 +28,24 @@ export const gameBoard = (() => {
   };
 
   const displayBoard = () => {
-    let spots = document.getElementsByClassName('spot');
-    for(let i = 0; i < spots.length; i++) {
+    const spots = document.getElementsByClassName('spot');
+    for (let i = 0; i < spots.length; i += 1) {
       spots[i].innerHTML = board[i];
     }
-  }
+  };
 
   return {
     board,
-    o,
-    x,
     mark,
     check,
-    displayBoard
+    displayBoard,
   };
 })();
 
-export const Player = (name, tile) => {
-  const getName = () => name;
-  const setName = () => name;
-  const selectTile = (index) => {
+export const player = (name) => {
+  const namePlayer = name;
+  const getName = () => namePlayer;
+  const selectTile = (tile) => {
     const message = document.createElement('div');
     message.innerHTML = "Select a tile by selecting 0 for 'O' and 1 for 'X'";
     let input = document.getElementById("index");
@@ -58,13 +58,13 @@ export const Player = (name, tile) => {
   };
 
   return {
+    namePlayer,
     getName,
-    setName,
     selectTile,
   };
 };
 
-export const Game = (() => {
+export const game = (() => {
   let score = [0, 0];
   const changeScore = (index) => {
     score[index] += 1;
@@ -74,6 +74,13 @@ export const Game = (() => {
   }
   const resetScore = () => {
     score = [0, 0];
+  }
+
+  return {
+    score,
+    changeScore,
+    resetBoard,
+    resetScore
   }
 })();
 
