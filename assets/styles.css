@@ -1,3 +1,11 @@
 .spot {
   width: 33.33%;
 }
+
+.x:hover, .o:hover {
+  background-color: aqua;
+}
+
+.x:active, .o:active {
+  background-color: yellow;
+}

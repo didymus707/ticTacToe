@@ -1,18 +1,18 @@
-export const gameBoard = (() => {
-  let board = ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'];
-  let tile = ['X', 'O'];
+const gameBoard = (() => {
+  const board = ['', '', '', '', '', '', '', '', ''];
+  const tile = ['X', 'O'];
   const message = document.getElementById('message');
 
   const mark = (space, tile) => {
     if (board[space] !== "") {
-      MessageChannel.innerHTML = "Choose another space";
+      message.innerHTML = "Choose another space";
     } else {
       board[space] = tile;
       check();
     }
   };
 
-  const check = () => {
+  const check = (player) => {
     if (
       (board[0] === board[1] && board[1] === board[2]) ||
       (board[3] === board[4] && board[4] === board[5]) ||
@@ -23,26 +23,26 @@ export const gameBoard = (() => {
       (board[0] === board[4] && board[4] === board[8]) ||
       (board[2] === board[4] && board[4] === board[6])
     ) {
-      return `the player that won`;
+      return `${player} won!!`;
     }
   };
 
   const displayBoard = () => {
-    const spots = document.getElementsByClassName('spot');
-    for (let i = 0; i < spots.length; i += 1) {
-      spots[i].innerHTML = board[i];
+    const container = document.getElementById('container');
+    container.innerHTML = '';
+    for (let i = 0; i < 9; i += 1) {
+      container.innerHTML += `<div class="spot border border-warning d-flex justify-content-center align-items-center text-white font-weight-bold">${board[i]}</div>`;
     }
   };
 
   return {
-    board,
     mark,
     check,
     displayBoard,
   };
 })();
 
-export const player = (name) => {
+const player = (name) => {
   const namePlayer = name;
   const getName = () => namePlayer;
   const selectTile = (tile) => {
@@ -64,7 +64,7 @@ export const player = (name) => {
   };
 };
 
-export const game = (() => {
+const game = (() => {
   let score = [0, 0];
   const changeScore = (index) => {
     score[index] += 1;
@@ -80,7 +80,8 @@ export const game = (() => {
     score,
     changeScore,
     resetBoard,
-    resetScore
+    resetScore,
   }
 })();
 
+export { gameBoard, player, game };
