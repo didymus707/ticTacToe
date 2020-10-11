@@ -39,11 +39,13 @@ const gameBoard = (() => {
     mark,
     check,
     displayBoard,
+    tile,
   };
 })();
 
-const player = (name) => {
+const player = (name, mark) => {
   const namePlayer = name;
+  const markPlayer = mark;
   const getName = () => namePlayer;
   const selectTile = (tile) => {
     const message = document.createElement('div');
@@ -59,6 +61,7 @@ const player = (name) => {
 
   return {
     namePlayer,
+    markPlayer,
     getName,
     selectTile,
   };
@@ -66,6 +69,7 @@ const player = (name) => {
 
 const game = (() => {
   let score = [0, 0];
+  const players = [];
   const changeScore = (index) => {
     score[index] += 1;
   };
@@ -81,6 +85,7 @@ const game = (() => {
     changeScore,
     resetBoard,
     resetScore,
+    players,
   }
 })();
 

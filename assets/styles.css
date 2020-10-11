@@ -2,10 +2,14 @@
   width: 33.33%;
 }
 
+.x, .o {
+  background-color: brown;
+}
+
 .x:hover, .o:hover {
   background-color: aqua;
 }
 
 .x:active, .o:active {
-  background-color: yellow;
+  background-color: blue;
 }
