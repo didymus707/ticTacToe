@@ -70,6 +70,7 @@ const player = (name, mark) => {
 const game = (() => {
   let score = [0, 0];
   const players = [];
+  let shift = '';
   const changeScore = (index) => {
     score[index] += 1;
   };
@@ -86,6 +87,7 @@ const game = (() => {
     resetBoard,
     resetScore,
     players,
+    shift,
   }
 })();
 

@@ -4,7 +4,7 @@ const message = document.getElementById('message');
 
 function welcome() {
   message.innerHTML = `Welcome to tic-tac-toe game<br>
-                       <button onclick="players()" type="button">Start</button>`;
+                       <button id="start" type="button">Start</button>`;
   game.gameBoard.displayBoard();
 }
 
@@ -17,9 +17,25 @@ function selectPlayer() {
   }
 }
 
+function startGame() {
+  game.gameBoard.board = ['', '', '', '', '', '', '', '', ''];
+  game.gameBoard.displayBoard();
+  playGame(game.game.players[0]);
+}
+
+function playGame(player) {
+  game.gameBoard.message.innerHTML = `${player.name} make a move`;
+  game.game
+}
+
 function createPlayer(mark) {
   const playerName = document.getElementById('player-name').value;
-  return game.player(playerName, mark);
+  game.gameBoard.players.push(game.player(playerName, mark));
+  if (game.gameBoard.tile.length > 0) {
+    selectPlayer();
+  } else {
+    startGame();
+  }
 }
 
 export { welcome, selectPlayer, createPlayer }
