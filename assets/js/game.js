@@ -106,6 +106,7 @@ const gameBoard = (() => {
     const button = document.createElement('button');
     button.setAttribute('type', 'button');
     button.setAttribute('id', 'button-reset');
+    button.className = 'bg-info text-white p-4 border-0 rounded my-2';
     button.addEventListener('click', () => { resetBoard(); });
     button.innerHTML = 'Reset';
     reset.appendChild(button);
@@ -135,6 +136,9 @@ const gameBoard = (() => {
       gameMatch.playing = false;
       gameMatch.displayScore();
       changeDivsColors();
+      displayReset();
+    } else if (!board.includes('')) {
+      message.innerHTML = 'We need another round to find a winner!!';
       displayReset();
     } else {
       gameMatch.shift = gameMatch.shift == gameMatch.players[0] ? gameMatch.players[1] : gameMatch.players[0];

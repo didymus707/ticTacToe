@@ -4,13 +4,13 @@ const message = document.getElementById('message');
 
 function welcome() {
   message.innerHTML = `Welcome to tic-tac-toe game<br>
-                       <button id="start" type="button">Start</button>`;
+                       <button id="start" type="button" class="bg-info text-white p-4 border-0 rounded">Start</button>`;
   game.gameBoard.displayBoard();
 }
 
 function selectPlayer() {
   message.innerHTML = `Player ${3 - game.gameBoard.tile.length} write a name and select a mark<br>
-                       <input type="text" placeholder="Name" id="player-name"></input>`;
+                       <input type="text" placeholder="Name" id="player-name" class="rounded border-0 my-2">`;
   const options = document.createElement('ul');
   for (let i = 0; i < game.gameBoard.tile.length; i += 1) {
     options.innerHTML += `<li id="${game.gameBoard.tile[i]}" class="mark-options list-inline-item p-3 rounded-circle text-white">${game.gameBoard.tile[i]}</li>`;

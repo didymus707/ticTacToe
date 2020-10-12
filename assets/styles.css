@@ -13,3 +13,7 @@
 .x:active, .o:active {
   background-color: blue;
 }
+
+.fonts {
+  font-size: larger;
+}
