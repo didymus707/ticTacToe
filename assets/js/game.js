@@ -1,7 +1,7 @@
 const gameMatch = (() => {
   const players = [];
   const shift = '';
-  let playing = false;
+  const playing = false;
 
   function makeAvailableMarks() {
     const spots = document.getElementsByClassName('spot');
@@ -57,28 +57,28 @@ const gameBoard = (() => {
   function changeDivsColors() {
     let indexes = [];
     if (board[0] === board[1] && board[1] === board[2] && board[0] !== '') {
-      indexes = [0,1,2];
+      indexes = [0, 1, 2];
     }
     if (board[3] === board[4] && board[4] === board[5] && board[3] !== '') {
-      indexes = [3,4,5];
+      indexes = [3, 4, 5];
     }
     if (board[6] === board[7] && board[7] === board[8] && board[6] !== '') {
-      indexes = [6,7,8];
+      indexes = [6, 7, 8];
     }
     if (board[0] === board[3] && board[3] === board[6] && board[0] !== '') {
-      indexes = [0,3,6];
+      indexes = [0, 3, 6];
     }
     if (board[1] === board[4] && board[4] === board[7] && board[1] !== '') {
-      indexes = [1,4,7];
+      indexes = [1, 4, 7];
     }
     if (board[2] === board[5] && board[5] === board[8] && board[2] !== '') {
-      indexes = [2,5,8];
+      indexes = [2, 5, 8];
     }
     if (board[0] === board[4] && board[4] === board[8] && board[0] !== '') {
-      indexes = [0,4,8];
+      indexes = [0, 4, 8];
     }
     if (board[2] === board[4] && board[4] === board[6] && board[2] !== '') {
-      indexes = [2,4,6];
+      indexes = [2, 4, 6];
     }
 
     for (let i = 0; i < indexes.length; i += 1) {
@@ -89,7 +89,6 @@ const gameBoard = (() => {
   const resetBoard = () => {
     // eslint-disable-next-line no-use-before-define
     board = ['', '', '', '', '', '', '', '', ''];
-    console.log(gameMatch.playing);
     // eslint-disable-next-line no-use-before-define
     displayBoard();
     // eslint-disable-next-line no-use-before-define
@@ -141,13 +140,13 @@ const gameBoard = (() => {
       message.innerHTML = 'We need another round to find a winner!!';
       displayReset();
     } else {
-      gameMatch.shift = gameMatch.shift == gameMatch.players[0] ? gameMatch.players[1] : gameMatch.players[0];
+      // eslint-disable-next-line max-len
+      gameMatch.shift = gameMatch.shift === gameMatch.players[0] ? gameMatch.players[1] : gameMatch.players[0];
       gameMatch.playGame();
     }
   };
 
   const mark = (tag) => {
-    console.log(gameMatch.playing);
     if (!gameMatch.playing) {
       return;
     }

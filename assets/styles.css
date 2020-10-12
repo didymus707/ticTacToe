@@ -10,7 +10,8 @@
   background-color: aqua;
 }
 
-.x:active, .o:active {
+.x:active,
+.o:active {
   background-color: blue;
 }
 
