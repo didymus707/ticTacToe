@@ -8,18 +8,6 @@ function welcome() {
   game.gameBoard.displayBoard();
 }
 
-function startGame() {
-  game.gameMatch.playing = true;
-  game.gameBoard.board = ['', '', '', '', '', '', '', '', ''];
-  game.gameBoard.displayBoard();
-  const spots = document.getElementsByClassName('spot');
-  for (let i = 0; i < spots.length; i += 1) {
-    spots[i].addEventListener('click', () => { game.gameBoard.mark(spots[i]); });
-  }
-  game.gameMatch.displayScore();
-  game.gameMatch.playGame(game.gameMatch.players[0]);
-}
-
 function selectPlayer() {
   message.innerHTML = `Player ${3 - game.gameBoard.tile.length} write a name and select a mark<br>
                        <input type="text" placeholder="Name" id="player-name"></input>`;
