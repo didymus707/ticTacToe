@@ -43,7 +43,7 @@ function createPlayer() {
     selectPlayer();
   } else {
     game.gameMatch.shift = game.gameMatch.players[0];
-    startGame();
+    game.gameMatch.startGame();
   }
 }
 

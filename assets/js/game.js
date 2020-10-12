@@ -2,9 +2,15 @@ const gameMatch = (() => {
   const players = [];
   const shift = '';
   let playing = false;
-  const changeScore = (index) => {
-    score[index] += 1;
-  };
+
+  function makeAvailableMarks() {
+    const spots = document.getElementsByClassName('spot');
+    for (let i = 0; i < spots.length; i += 1) {
+      // eslint-disable-next-line no-use-before-define
+      spots[i].addEventListener('click', () => { gameBoard.mark(spots[i]); });
+    }
+  }
+
   function playGame() {
     // eslint-disable-next-line no-use-before-define
     gameBoard.message.innerHTML = `${gameMatch.shift.namePlayer} make a move`;
@@ -21,13 +27,25 @@ const gameMatch = (() => {
     }
   }
 
+  function startGame() {
+    gameMatch.playing = true;
+    // eslint-disable-next-line no-use-before-define
+    gameBoard.board = ['', '', '', '', '', '', '', '', ''];
+    // eslint-disable-next-line no-use-before-define
+    gameBoard.displayBoard();
+    displayScore();
+    playGame(players[0]);
+    makeAvailableMarks();
+  }
+
   return {
-    changeScore,
     players,
     shift,
     playGame,
     playing,
     displayScore,
+    startGame,
+    makeAvailableMarks,
   };
 })();
 
@@ -71,7 +89,6 @@ const gameBoard = (() => {
   const resetBoard = () => {
     // eslint-disable-next-line no-use-before-define
     board = ['', '', '', '', '', '', '', '', ''];
-    gameMatch.playing = true;
     console.log(gameMatch.playing);
     // eslint-disable-next-line no-use-before-define
     displayBoard();
@@ -79,6 +96,8 @@ const gameBoard = (() => {
     const reset = document.getElementById('reset');
     const button = document.getElementById('button-reset');
     reset.removeChild(button);
+    gameMatch.makeAvailableMarks();
+    gameMatch.playing = true;
     gameMatch.playGame();
   };
 
@@ -124,6 +143,7 @@ const gameBoard = (() => {
   };
 
   const mark = (tag) => {
+    console.log(gameMatch.playing);
     if (!gameMatch.playing) {
       return;
     }
