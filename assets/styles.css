@@ -2,11 +2,11 @@
   width: 33.33%;
 }
 
-.x, .o {
+.mark-options {
   background-color: brown;
 }
 
-.x:hover, .o:hover {
+.mark-options:hover {
   background-color: aqua;
 }
 
