@@ -26,7 +26,7 @@ const selectPlayer = () => {
   }
 }
 
-const createPlayer = () => {
+function createPlayer() {
   const playerName = document.getElementById('player-name').value;
   const player = game.player(playerName, this.innerHTML);
   game.gameMatch.players.push(player);
