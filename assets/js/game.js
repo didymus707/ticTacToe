@@ -1,3 +1,10 @@
+const message = document.getElementById('message');
+const optionsMark = document.getElementsByClassName('mark-options');
+const getName = () => { return document.getElementById('player-name').value; };
+const div = document.getElementById('score');
+const reset = document.getElementById('reset');
+const container = document.getElementById('container');
+
 const gameMatch = (() => {
   const players = [];
   const shift = '';
@@ -14,10 +21,9 @@ const gameMatch = (() => {
   const playGame = () => {
     // eslint-disable-next-line no-use-before-define
     gameBoard.message.innerHTML = `${gameMatch.shift.namePlayer} make a move`;
-  }
+  };
 
   const displayScore = () => {
-    const div = document.getElementById('score');
     div.innerHTML = '<p class="col-12 text-center bg-info text-white m-0">SCORE<p>';
     for (let i = 0; i < players.length; i += 1) {
       div.innerHTML += `<div class="col-6 p-2 bg-info text-white text-center">
@@ -25,7 +31,7 @@ const gameMatch = (() => {
                          <p>${players[i].score}</p>
                        </div>`;
     }
-  }
+  };
 
   const startGame = () => {
     gameMatch.playing = true;
@@ -101,7 +107,6 @@ const gameBoard = (() => {
   };
 
   const displayReset = () => {
-    const reset = document.getElementById('reset');
     const button = document.createElement('button');
     button.setAttribute('type', 'button');
     button.setAttribute('id', 'button-reset');
@@ -112,7 +117,6 @@ const gameBoard = (() => {
   }
 
   const displayBoard = () => {
-    const container = document.getElementById('container');
     container.innerHTML = '';
     for (let i = 0; i < 9; i += 1) {
       container.innerHTML += `<div data-number="${i}" id="${i}" class="spot border border-warning d-flex justify-content-center align-items-center text-white font-weight-bold">${board[i]}</div>`;
@@ -185,4 +189,10 @@ const player = (name, mark) => {
   };
 };
 
-export { gameBoard, player, gameMatch };
+export { gameBoard,
+  player,
+  gameMatch,
+  message,
+  optionsMark,
+  getName,
+};
