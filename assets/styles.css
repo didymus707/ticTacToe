@@ -1,0 +1,61 @@
+body {
+  max-width: 840px;
+  margin: auto;
+}
+
+.noone {
+  display: none;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 100px);
+  grid-gap: 5px;
+  width: 90%;
+  margin: 20% auto;
+}
+
+.spot {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box1 {
+  background-color: brown;
+}
+
+.box2 {
+  background-color: darkcyan;
+}
+
+.box3 {
+  background-color: tomato;
+}
+
+.box4 {
+  background-color: teal;
+}
+
+.box5 {
+  background-color: darkgreen;
+}
+
+.box6 {
+  background-color: darkgoldenrod;
+}
+
+.box7 {
+  background-color: yellow;
+}
+
+.box8 {
+  background-color: yellowgreen;
+}
+
+.box9 {
+  background-color: lightgreen;
+}
+

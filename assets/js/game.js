@@ -26,6 +26,7 @@ export const gameBoard = (() => {
   };
 
   const displayBoard = () => {
+    console.log(`I am working but i still can't figure out why the whole function isn't running`);
     let spots = document.getElementsByClassName('spot');
     for(let i = 0; i < spots.length; i++) {
       spots[i].innerHTML = board[i];
@@ -38,11 +39,11 @@ export const gameBoard = (() => {
     x,
     mark,
     check,
-    displayBoard
+    displayBoard,
   };
 })();
 
-export const Player = (name, tile) => {
+const Player = (name, tile) => {
   const getName = () => name;
   const setName = () => name;
   const selectTile = (index) => {
@@ -77,3 +78,4 @@ export const Game = (() => {
   }
 })();
 
+gameBoard.displayBoard();
