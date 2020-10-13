@@ -5,7 +5,7 @@ const welcome = () => {
   game.message.innerHTML = `Welcome to tic-tac-toe game<br>
                        <button id="start" type="button" class="bg-info text-white p-4 border-0 rounded">Start</button>`;
   game.gameBoard.displayBoard();
-}
+};
 
 const selectPlayer = () => {
   game.message.innerHTML = `Player ${
@@ -21,7 +21,7 @@ const selectPlayer = () => {
     // eslint-disable-next-line no-use-before-define
     game.optionsMark[i].addEventListener('click', createPlayer);
   }
-}
+};
 
 function createPlayer() {
   const playerName = game.getName();

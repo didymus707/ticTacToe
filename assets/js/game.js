@@ -1,6 +1,6 @@
 const message = document.getElementById('message');
 const optionsMark = document.getElementsByClassName('mark-options');
-const getName = () => { return document.getElementById('player-name').value; };
+const getName = () => document.getElementById('player-name').value;
 const div = document.getElementById('score');
 const reset = document.getElementById('reset');
 const container = document.getElementById('container');
@@ -16,7 +16,7 @@ const gameMatch = (() => {
       // eslint-disable-next-line no-use-before-define
       spots[i].addEventListener('click', () => { gameBoard.mark(spots[i]); });
     }
-  }
+  };
 
   const playGame = () => {
     // eslint-disable-next-line no-use-before-define
@@ -42,7 +42,7 @@ const gameMatch = (() => {
     displayScore();
     playGame(players[0]);
     makeAvailableMarks();
-  }
+  };
 
   return {
     players,
@@ -90,7 +90,7 @@ const gameBoard = (() => {
     for (let i = 0; i < indexes.length; i += 1) {
       document.getElementById(indexes[i]).className += ' bg-success';
     }
-  }
+  };
 
   const resetBoard = () => {
     // eslint-disable-next-line no-use-before-define
@@ -114,7 +114,7 @@ const gameBoard = (() => {
     button.addEventListener('click', () => { resetBoard(); });
     button.innerHTML = 'Reset';
     reset.appendChild(button);
-  }
+  };
 
   const displayBoard = () => {
     container.innerHTML = '';
@@ -189,7 +189,8 @@ const player = (name, mark) => {
   };
 };
 
-export { gameBoard,
+export {
+  gameBoard,
   player,
   gameMatch,
   message,

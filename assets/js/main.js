@@ -5,6 +5,6 @@ logic.welcome();
 
 const players = () => {
   logic.selectPlayer();
-}
+};
 
 document.getElementById('start').addEventListener('click', players);
