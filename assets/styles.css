@@ -1,0 +1,20 @@
+.spot {
+  width: 33.33%;
+}
+
+.mark-options {
+  background-color: brown;
+}
+
+.mark-options:hover {
+  background-color: aqua;
+}
+
+.x:active,
+.o:active {
+  background-color: blue;
+}
+
+.fonts {
+  font-size: larger;
+}
