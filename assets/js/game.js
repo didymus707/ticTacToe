@@ -98,7 +98,6 @@ const gameBoard = (() => {
     // eslint-disable-next-line no-use-before-define
     displayBoard();
     // eslint-disable-next-line no-use-before-define
-    const reset = document.getElementById('reset');
     const button = document.getElementById('button-reset');
     reset.removeChild(button);
     gameMatch.makeAvailableMarks();
