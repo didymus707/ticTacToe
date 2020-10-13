@@ -3,13 +3,13 @@ import * as game from './game.js';
 
 const message = document.getElementById('message');
 
-function welcome() {
+const welcome = () => {
   message.innerHTML = `Welcome to tic-tac-toe game<br>
                        <button id="start" type="button" class="bg-info text-white p-4 border-0 rounded">Start</button>`;
   game.gameBoard.displayBoard();
 }
 
-function selectPlayer() {
+const selectPlayer = () => {
   message.innerHTML = `Player ${
     3 - game.gameBoard.tile.length
   } write a name and select a mark<br>
@@ -26,7 +26,7 @@ function selectPlayer() {
   }
 }
 
-function createPlayer() {
+const createPlayer = () => {
   const playerName = document.getElementById('player-name').value;
   const player = game.player(playerName, this.innerHTML);
   game.gameMatch.players.push(player);

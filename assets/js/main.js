@@ -3,7 +3,7 @@ import * as logic from './logic.js';
 
 logic.welcome();
 
-function players() {
+const players = () => {
   logic.selectPlayer();
 }
 
