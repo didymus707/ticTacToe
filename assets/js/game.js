@@ -3,7 +3,7 @@ const gameMatch = (() => {
   const shift = '';
   const playing = false;
 
-  function makeAvailableMarks() {
+  const makeAvailableMarks = () => {
     const spots = document.getElementsByClassName('spot');
     for (let i = 0; i < spots.length; i += 1) {
       // eslint-disable-next-line no-use-before-define
@@ -11,12 +11,12 @@ const gameMatch = (() => {
     }
   }
 
-  function playGame() {
+  const playGame = () => {
     // eslint-disable-next-line no-use-before-define
     gameBoard.message.innerHTML = `${gameMatch.shift.namePlayer} make a move`;
   }
 
-  function displayScore() {
+  const displayScore = () => {
     const div = document.getElementById('score');
     div.innerHTML = '<p class="col-12 text-center bg-info text-white m-0">SCORE<p>';
     for (let i = 0; i < players.length; i += 1) {
@@ -27,7 +27,7 @@ const gameMatch = (() => {
     }
   }
 
-  function startGame() {
+  const startGame = () => {
     gameMatch.playing = true;
     // eslint-disable-next-line no-use-before-define
     gameBoard.board = ['', '', '', '', '', '', '', '', ''];
@@ -54,7 +54,7 @@ const gameBoard = (() => {
   const tile = ['X', 'O'];
   const message = document.getElementById('message');
 
-  function changeDivsColors() {
+  const changeDivsColors = () => {
     let indexes = [];
     if (board[0] === board[1] && board[1] === board[2] && board[0] !== '') {
       indexes = [0, 1, 2];
@@ -100,7 +100,7 @@ const gameBoard = (() => {
     gameMatch.playGame();
   };
 
-  function displayReset() {
+  const displayReset = () => {
     const reset = document.getElementById('reset');
     const button = document.createElement('button');
     button.setAttribute('type', 'button');
