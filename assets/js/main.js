@@ -12,10 +12,11 @@ const gameBoard = (() => {
     }
   };
 
-  const check = () => {
+  const check = (arr) => {
     const horizontals = [[0,1,2], [3,4,5], [6,7,8]];
     const verticals = [[0,3,5], [1,4,7], [2,5,8]];
     const diagonals = [[0,4,8], [2,4,6]];
+    result = false;
     
   };
 
@@ -86,20 +87,17 @@ const Game = (() => {
     return index;
   }
 
-  const info = (num, player) => {
-    const name = player[num].getName();
-    const formCon = document.querySelector('.form-container');
-    const div = document.createElement('div');
-    div.setAttribute('class', 'info');
-    const msg = `${name}, your turn`;
-    document.body.insertBefore(msg, formCon);
+  const info = (player) => {
+    const msg = document.querySelector('.info-msg');
+    const name = player.getName();
+    msg.textContent = `${name}, you have played....`
   }
 
   // place tiles on click
   boardContainer.addEventListener('click', (e) => {
     let num = switchPlays(simBoard);
     let player = players[num];
-    info(num, player)
+    info(player)
     let index = spots.indexOf(e.target);
     gameBoard.mark(index, player.tile);
   });
