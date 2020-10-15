@@ -2,22 +2,34 @@ const gameBoard = (() => {
   let board = ["", "", "", "", "", "", "", "", ""];
   let spaces = [...document.querySelectorAll('.spot')];
   const tiles = ['O', 'X'];
-  const mark = (space, tile) => {
+  const mark = (space, player) => {
     if (board[space] !== "") {
       alert('Choose another space');
     } else {
-      spaces[space].innerHTML = tile;
-      board[space] = tile;
-      check();
+      spaces[space].innerHTML = player.tile;
+      board[space] = player.tile;
+      check(spaces, player);
     }
   };
 
-  const check = (arr) => {
-    const horizontals = [[0,1,2], [3,4,5], [6,7,8]];
-    const verticals = [[0,3,5], [1,4,7], [2,5,8]];
-    const diagonals = [[0,4,8], [2,4,6]];
-    result = false;
-    
+  const check = (arr, player) => {
+    const msg = document.querySelector('.info-msg');
+    const name = player.getName();
+    let moves = 0;
+    const horizontals = [[arr[0],arr[1],arr[2]], [arr[3],arr[4],arr[5]], [arr[6],arr[7],arr[8]]];
+    const verticals = [[arr[0],arr[3],arr[5]], [arr[1],arr[4],arr[7]], [arr[2],arr[5],arr[8]]];
+    const diagonals = [[arr[0],arr[4],arr[8]], [arr[2],arr[4],arr[6]]];
+    const winCombo = [...horizontals, ...verticals, ...diagonals];
+    const truthy = winCombo.some(ary => ary.every(ele => ele === player.tile));
+    while (moves <= 9) {
+      if (truthy) {
+        msg.textContent = name + ' wins';
+      } else if (!arr.includes("")) {
+        msg.textContent = `It's a tie`;
+      } else return;
+      moves++;
+    }
+    return msg;
   };
 
   return {
@@ -90,7 +102,7 @@ const Game = (() => {
   const info = (player) => {
     const msg = document.querySelector('.info-msg');
     const name = player.getName();
-    msg.textContent = `${name}, you have played....`
+    msg.textContent = `${name}, you have played.... Next Player your turn`;
   }
 
   // place tiles on click
@@ -99,7 +111,7 @@ const Game = (() => {
     let player = players[num];
     info(player)
     let index = spots.indexOf(e.target);
-    gameBoard.mark(index, player.tile);
+    gameBoard.mark(index, player);
   });
 
   return {
