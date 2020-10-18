@@ -8,7 +8,7 @@ const gameBoard = (() => {
     } else {
       spaces[space].innerHTML = player.tile;
       board[space] = player.tile;
-      check(spaces, player);
+      check(board, player);
     }
   };
 
@@ -81,9 +81,18 @@ const Game = (() => {
   const changeScore = (index) => {
     score[index] += 1;
   };
-  const resetBoard = () => {
-    gameBoard.board = ['', '', '', '', '', '', '', '', ''];
+
+  const rematch = (gameboard) => {
+    gameboard = ["", "", "", "", "", "", "", "", ""];
+    spots.map((el) => {
+      el.textContent = '';
+    });
   }
+
+  const resetGame = (gameboard) => {
+    rematch();
+  }
+
   const resetScore = () => {
     score = [0, 0];
   }
@@ -112,7 +121,20 @@ const Game = (() => {
     info(player)
     let index = spots.indexOf(e.target);
     gameBoard.mark(index, player);
+    openModal();
   });
+
+  const openModal = () => {
+    let word = document.querySelector('.info-msg').textContent;
+    let modal = document.querySelector('.modal');
+    if (word.includes('wins') || word.includes('tie')) {
+      modal.style.display = 'block';
+    }
+    let rematchBtn = document.querySelector('.rematch');
+    rematchBtn.addEventListener('click', () => {
+      rematch(board);
+    });
+  };
 
   return {
     displayBoard
